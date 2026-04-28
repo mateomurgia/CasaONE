@@ -1,0 +1,1 @@
+- [Dark palette preference](feedback_dark_palette.md) — No white/cream backgrounds, dark tones throughout, Apple-inspired typography

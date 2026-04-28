@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx create-next-app@latest casauno --typescript --tailwind --eslint --app --no-src-dir --import-alias \"@/*\" --yes)",
+      "Bash(npm run:*)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(taskkill /F /IM node.exe)",
+      "WebSearch",
+      "WebFetch(domain:www.pexels.com)",
+      "WebFetch(domain:api.pexels.com)",
+      "WebFetch(domain:medium.com)",
+      "WebFetch(domain:shotstack.io)",
+      "WebFetch(domain:www.remotion.dev)",
+      "WebFetch(domain:videos.pexels.com)"
+    ]
+  }
+}
