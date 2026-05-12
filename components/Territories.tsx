@@ -68,8 +68,10 @@ function TerritoryRow({ t, index }: { t: (typeof territories)[0]; index: number 
         style={{
           aspectRatio: "16/9",
           direction: "ltr",
+          border: "1px solid rgba(226, 221, 213, 0.08)",
+          boxShadow: "0 22px 70px rgba(0, 0, 0, 0.22)",
         }}
-        whileHover={{ scale: 1.02 }}
+        whileHover={{ scale: 1.02, y: -4 }}
         transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
       >
         <motion.div className="absolute inset-0" style={{ y: imgY }}>
@@ -78,7 +80,7 @@ function TerritoryRow({ t, index }: { t: (typeof territories)[0]; index: number 
             alt={t.name}
             fill
             sizes="(max-width: 768px) 100vw, 50vw"
-            className="object-cover"
+            className="object-cover transition-transform duration-700 group-hover:scale-[1.035]"
             loading="lazy"
           />
         </motion.div>
@@ -87,7 +89,14 @@ function TerritoryRow({ t, index }: { t: (typeof territories)[0]; index: number 
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "linear-gradient(180deg, rgba(12,12,10,0.1) 0%, rgba(12,12,10,0.4) 100%)",
+              "linear-gradient(180deg, rgba(12,12,10,0.06) 0%, rgba(12,12,10,0.46) 100%)",
+          }}
+        />
+        <div
+          className="absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100 pointer-events-none"
+          style={{
+            background:
+              "linear-gradient(135deg, rgba(184,146,74,0.14) 0%, transparent 42%, rgba(234,227,213,0.08) 100%)",
           }}
         />
         {/* Number overlay */}
@@ -134,7 +143,7 @@ function TerritoryRow({ t, index }: { t: (typeof territories)[0]; index: number 
           style={{
             fontFamily: "'Inter', system-ui, sans-serif",
             fontSize: "0.9rem",
-            color: "rgba(212, 197, 169, 0.45)",
+            color: "rgba(212, 197, 169, 0.54)",
             lineHeight: 1.7,
             maxWidth: "28rem",
           }}
@@ -155,7 +164,7 @@ export function Territories() {
       id="territories"
       ref={sectionRef}
       style={{
-        background: "#0C0C0A",
+        background: "linear-gradient(180deg, #11110E 0%, #17160F 50%, #11110E 100%)",
         paddingTop: "20vh",
         paddingBottom: "20vh",
       }}
@@ -170,7 +179,7 @@ export function Territories() {
       >
         <span
           className="text-label"
-          style={{ color: "#8B6A2E", fontSize: "0.55rem", letterSpacing: "0.24em" }}
+          style={{ color: "#B8924A", fontSize: "0.55rem", letterSpacing: "0.24em" }}
         >
           Territorios
         </span>
@@ -180,13 +189,13 @@ export function Territories() {
             fontFamily: "'Cormorant Garamond', Georgia, serif",
             fontSize: "clamp(2rem, 4.5vw, 3.5rem)",
             fontWeight: 300,
-            color: "#D4C5A9",
+            color: "#EAE3D5",
             lineHeight: 1.1,
           }}
         >
           Cinco paisajes.
           <br />
-          <em style={{ fontStyle: "italic", color: "rgba(212, 197, 169, 0.35)" }}>
+          <em style={{ fontStyle: "italic", color: "rgba(234, 227, 213, 0.48)" }}>
             Cada uno, irreducible.
           </em>
         </h2>

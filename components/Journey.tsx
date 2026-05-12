@@ -18,8 +18,10 @@ function StopRow({ stop, index }: { stop: (typeof stops)[0]; index: number }) {
   return (
     <motion.div
       ref={ref}
+      className="group"
       initial={{ opacity: 0, y: 30 }}
       animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+      whileHover={{ x: 6 }}
       transition={{
         duration: 0.8,
         delay: index * 0.1,
@@ -29,6 +31,7 @@ function StopRow({ stop, index }: { stop: (typeof stops)[0]; index: number }) {
       {/* Hairline divider */}
       {index > 0 && (
         <div
+          className="transition-colors duration-500 group-hover:bg-[#8B6A2E]"
           style={{
             height: "1px",
             background: "rgba(139, 106, 46, 0.12)",
@@ -37,7 +40,7 @@ function StopRow({ stop, index }: { stop: (typeof stops)[0]; index: number }) {
       )}
 
       <div
-        className="grid grid-cols-1 md:grid-cols-[auto_auto_1fr] gap-3 md:gap-10 items-baseline py-8 md:py-10"
+        className="grid grid-cols-1 md:grid-cols-[auto_auto_1fr] gap-3 md:gap-10 items-baseline py-8 md:py-10 transition-colors duration-500"
       >
         {/* Day */}
         <span
@@ -69,7 +72,7 @@ function StopRow({ stop, index }: { stop: (typeof stops)[0]; index: number }) {
           style={{
             fontFamily: "'Inter', system-ui, sans-serif",
             fontSize: "0.9rem",
-            color: "rgba(212, 197, 169, 0.4)",
+            color: "rgba(212, 197, 169, 0.5)",
             lineHeight: 1.7,
           }}
         >
@@ -88,7 +91,7 @@ export function Journey() {
     <section
       id="journey"
       style={{
-        background: "#141411",
+        background: "linear-gradient(180deg, #1A1913 0%, #201E16 55%, #17160F 100%)",
         paddingTop: "20vh",
         paddingBottom: "20vh",
       }}
@@ -105,7 +108,7 @@ export function Journey() {
         >
           <span
             className="text-label block mb-8"
-            style={{ color: "#8B6A2E", fontSize: "0.55rem", letterSpacing: "0.24em" }}
+            style={{ color: "#B8924A", fontSize: "0.55rem", letterSpacing: "0.24em" }}
           >
             Viaje insignia &middot; 14 días
           </span>
@@ -116,12 +119,12 @@ export function Journey() {
               fontWeight: 300,
               lineHeight: 1.05,
               letterSpacing: "-0.02em",
-              color: "#D4C5A9",
+              color: "#EAE3D5",
             }}
           >
             De Buenos Aires
             <br />
-            <em style={{ fontStyle: "italic", color: "rgba(212, 197, 169, 0.35)" }}>
+            <em style={{ fontStyle: "italic", color: "rgba(234, 227, 213, 0.48)" }}>
               al fin del mundo.
             </em>
           </h2>

@@ -114,10 +114,11 @@ export function Hero() {
         <div
           className="absolute inset-0"
           style={{
-            background: "rgba(12, 12, 10, 0.88)",
-            backdropFilter: "blur(16px)",
-            WebkitBackdropFilter: "blur(16px)",
-            borderBottom: "1px solid rgba(139, 106, 46, 0.08)",
+            background: "rgba(12, 12, 10, 0.82)",
+            backdropFilter: "blur(18px) saturate(1.08)",
+            WebkitBackdropFilter: "blur(18px) saturate(1.08)",
+            borderBottom: "1px solid rgba(139, 106, 46, 0.16)",
+            boxShadow: "0 16px 48px rgba(0, 0, 0, 0.18)",
           }}
         />
         {/* Logo */}
@@ -219,7 +220,7 @@ export function Hero() {
               loop
               playsInline
               initial={{ opacity: 0 }}
-              animate={{ opacity: 0.35 }}
+              animate={{ opacity: 0.42 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 1.5, ease: "easeInOut" }}
             />
@@ -229,10 +230,19 @@ export function Hero() {
             className="absolute inset-0"
             style={{
               background:
-                "radial-gradient(ellipse 70% 60% at 50% 45%, rgba(12,12,10,0.4) 0%, rgba(12,12,10,0.85) 100%)",
+                "radial-gradient(ellipse 70% 60% at 50% 45%, rgba(12,12,10,0.34) 0%, rgba(12,12,10,0.86) 100%), linear-gradient(180deg, rgba(12,12,10,0.05) 0%, rgba(12,12,10,0.36) 100%)",
             }}
           />
         </motion.div>
+
+        <motion.div
+          className="absolute inset-x-0 top-0 h-48 pointer-events-none"
+          style={{
+            background: "linear-gradient(180deg, rgba(184,146,74,0.12), transparent)",
+          }}
+          animate={shouldReduce ? undefined : { opacity: [0.45, 0.75, 0.45] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        />
 
         {/* Centered content */}
         <motion.div
@@ -248,10 +258,11 @@ export function Hero() {
               height: "auto",
               margin: "0 auto 2.5rem",
               display: "block",
-              filter: "drop-shadow(0 0 40px rgba(12,12,10,0.5))",
+              filter: "drop-shadow(0 0 44px rgba(12,12,10,0.62))",
             }}
             initial={{ opacity: 0, y: 30, scale: 0.92 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
+            whileHover={{ scale: 1.025 }}
             transition={{ duration: 1.4, delay: 0, ease: [0.25, 0.46, 0.45, 0.94] }}
           />
 
@@ -263,6 +274,7 @@ export function Hero() {
               lineHeight: 1.0,
               letterSpacing: "-0.03em",
               color: "#D4C5A9",
+              textShadow: "0 24px 70px rgba(0,0,0,0.38)",
             }}
             initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
@@ -281,6 +293,7 @@ export function Hero() {
               color: "rgba(212, 197, 169, 0.4)",
               fontStyle: "italic",
               marginTop: "0.1em",
+              textShadow: "0 22px 64px rgba(0,0,0,0.32)",
             }}
             initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
@@ -318,6 +331,7 @@ export function Hero() {
               key={v.label}
               onClick={() => setCurrentVideo(i)}
               className="flex items-center gap-2 group"
+              aria-label={`Ver ${v.label}`}
               style={{ background: "none", border: "none", cursor: "pointer", padding: "4px 0" }}
             >
               <span

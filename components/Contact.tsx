@@ -59,7 +59,7 @@ function FloatingInput({
   const isActive = focused || value.length > 0;
 
   return (
-    <div className="relative pt-5">
+    <div className="relative pt-5 group">
       <label
         htmlFor={name}
         className="absolute left-0 transition-all duration-300 pointer-events-none"
@@ -67,7 +67,7 @@ function FloatingInput({
           fontFamily: "'Inter', system-ui, sans-serif",
           fontSize: isActive ? "0.5rem" : "0.9rem",
           top: isActive ? "0" : "1.55rem",
-          color: focused ? "#8B6A2E" : "rgba(212, 197, 169, 0.3)",
+          color: focused ? "#C49A4D" : "rgba(234, 227, 213, 0.52)",
           letterSpacing: isActive ? "0.15em" : "0",
           textTransform: isActive ? "uppercase" : "none",
         }}
@@ -88,9 +88,10 @@ function FloatingInput({
         style={{
           fontFamily: "'Inter', system-ui, sans-serif",
           fontSize: "0.9rem",
-          color: "#D4C5A9",
-          borderBottom: `1px solid ${focused ? "#8B6A2E" : "rgba(139, 106, 46, 0.15)"}`,
+          color: "#EAE3D5",
+          borderBottom: `1px solid ${focused ? "#C49A4D" : "rgba(184, 146, 74, 0.32)"}`,
           minHeight: "16px",
+          boxShadow: focused ? "0 10px 24px -24px rgba(184, 146, 74, 0.8)" : "none",
         }}
       />
     </div>
@@ -115,7 +116,7 @@ function ChipSelect({
       <span
         className="text-label block mb-4"
         style={{
-          color: "rgba(212, 197, 169, 0.3)",
+          color: "rgba(234, 227, 213, 0.52)",
           fontSize: "0.5rem",
           letterSpacing: "0.15em",
         }}
@@ -126,25 +127,28 @@ function ChipSelect({
         {options.map((opt) => {
           const isSelected = selected.includes(opt);
           return (
-            <button
+            <motion.button
               key={opt}
               type="button"
               onClick={() => onToggle(opt)}
               className="transition-all duration-300"
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.98 }}
               style={{
-                padding: "0.4rem 0.9rem",
+                padding: "0.48rem 0.95rem",
                 fontSize: "0.75rem",
                 fontFamily: "'Inter', system-ui, sans-serif",
                 letterSpacing: "0.03em",
-                border: `1px solid ${isSelected ? "#8B6A2E" : "rgba(139, 106, 46, 0.15)"}`,
+                border: `1px solid ${isSelected ? "#C49A4D" : "rgba(184, 146, 74, 0.32)"}`,
                 borderRadius: "2px",
-                background: isSelected ? "rgba(139, 106, 46, 0.12)" : "transparent",
-                color: isSelected ? "#D4C5A9" : "rgba(212, 197, 169, 0.4)",
+                background: isSelected ? "rgba(184, 146, 74, 0.16)" : "rgba(212, 197, 169, 0.02)",
+                color: isSelected ? "#F0EAE0" : "rgba(234, 227, 213, 0.62)",
                 cursor: "pointer",
+                boxShadow: isSelected ? "0 10px 28px rgba(139, 106, 46, 0.12)" : "none",
               }}
             >
               {opt}
-            </button>
+            </motion.button>
           );
         })}
       </div>
@@ -170,7 +174,7 @@ function RadioGroup({
       <span
         className="text-label block mb-4"
         style={{
-          color: "rgba(212, 197, 169, 0.3)",
+          color: "rgba(234, 227, 213, 0.52)",
           fontSize: "0.5rem",
           letterSpacing: "0.15em",
         }}
@@ -184,12 +188,12 @@ function RadioGroup({
             className="flex items-center gap-2 cursor-pointer group"
           >
             <span
-              className="transition-all duration-300"
+              className="transition-all duration-300 group-hover:border-[#8B6A2E]"
               style={{
                 width: "14px",
                 height: "14px",
                 borderRadius: "50%",
-                border: `1px solid ${selected === opt ? "#8B6A2E" : "rgba(139, 106, 46, 0.2)"}`,
+                border: `1px solid ${selected === opt ? "#C49A4D" : "rgba(184, 146, 74, 0.3)"}`,
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -201,7 +205,7 @@ function RadioGroup({
                     width: "6px",
                     height: "6px",
                     borderRadius: "50%",
-                    background: "#8B6A2E",
+                    background: "#C49A4D",
                   }}
                 />
               )}
@@ -218,7 +222,7 @@ function RadioGroup({
               style={{
                 fontFamily: "'Inter', system-ui, sans-serif",
                 fontSize: "0.8rem",
-                color: selected === opt ? "#D4C5A9" : "rgba(212, 197, 169, 0.4)",
+                color: selected === opt ? "#F0EAE0" : "rgba(234, 227, 213, 0.62)",
                 transition: "color 300ms",
               }}
             >
@@ -254,7 +258,7 @@ function SelectField({
         style={{
           fontFamily: "'Inter', system-ui, sans-serif",
           fontSize: "0.5rem",
-          color: focused ? "#8B6A2E" : "rgba(212, 197, 169, 0.3)",
+          color: focused ? "#C49A4D" : "rgba(234, 227, 213, 0.52)",
           letterSpacing: "0.15em",
           textTransform: "uppercase",
           transition: "color 300ms",
@@ -273,8 +277,8 @@ function SelectField({
         style={{
           fontFamily: "'Inter', system-ui, sans-serif",
           fontSize: "0.9rem",
-          color: value ? "#D4C5A9" : "rgba(212, 197, 169, 0.3)",
-          borderBottom: `1px solid ${focused ? "#8B6A2E" : "rgba(139, 106, 46, 0.15)"}`,
+          color: value ? "#F0EAE0" : "rgba(234, 227, 213, 0.52)",
+          borderBottom: `1px solid ${focused ? "#C49A4D" : "rgba(184, 146, 74, 0.32)"}`,
           transition: "border-color 300ms",
         }}
       >
@@ -344,15 +348,24 @@ export function Contact() {
     <section
       id="contact"
       style={{
-        background: "#141411",
+        background:
+          "radial-gradient(ellipse 80% 50% at 50% 0%, rgba(184,146,74,0.14), transparent 62%), linear-gradient(180deg, #191812 0%, #11110E 100%)",
         paddingTop: "20vh",
         paddingBottom: "12vh",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
       }}
-      className="px-6 md:px-16 lg:px-24"
+      className="w-full px-6 md:px-16 lg:px-24"
     >
       <motion.div
         ref={ref}
-        className="max-w-2xl mx-auto"
+        className="w-full"
+        style={{
+          maxWidth: "42rem",
+          marginLeft: "auto",
+          marginRight: "auto",
+        }}
         initial={{ opacity: 0, y: 40 }}
         animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
         transition={{
@@ -362,7 +375,7 @@ export function Contact() {
       >
         <span
           className="text-label block text-center mb-8"
-          style={{ color: "#8B6A2E", fontSize: "0.55rem", letterSpacing: "0.24em" }}
+          style={{ color: "#B8924A", fontSize: "0.55rem", letterSpacing: "0.24em" }}
         >
           Contacto
         </span>
@@ -374,7 +387,7 @@ export function Contact() {
             fontSize: "clamp(2rem, 4.5vw, 3.5rem)",
             fontWeight: 300,
             lineHeight: 1.1,
-            color: "#D4C5A9",
+            color: "#EAE3D5",
           }}
         >
           Diseñemos tu viaje.
@@ -382,7 +395,12 @@ export function Contact() {
 
         {status === "success" ? (
           <motion.div
-            className="text-center py-16"
+            className="text-center py-16 px-8"
+            style={{
+              border: "1px solid rgba(139, 106, 46, 0.18)",
+              background: "rgba(12, 12, 10, 0.28)",
+              boxShadow: "0 28px 80px rgba(0, 0, 0, 0.2)",
+            }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
@@ -404,7 +422,7 @@ export function Contact() {
                 fontSize: "1.4rem",
                 fontWeight: 300,
                 fontStyle: "italic",
-                color: "rgba(212, 197, 169, 0.4)",
+              color: "rgba(234, 227, 213, 0.62)",
                 marginTop: "0.75rem",
               }}
             >
@@ -412,7 +430,25 @@ export function Contact() {
             </p>
           </motion.div>
         ) : (
-          <form onSubmit={handleSubmit} className="flex flex-col gap-8" noValidate>
+          <form
+            onSubmit={handleSubmit}
+            className="relative overflow-hidden mx-auto flex w-full flex-col gap-8 p-6 sm:p-8 md:p-10"
+            style={{
+              width: "100%",
+              marginLeft: "auto",
+              marginRight: "auto",
+              border: "1px solid rgba(184, 146, 74, 0.26)",
+              background: "linear-gradient(180deg, rgba(28,27,22,0.94), rgba(18,18,15,0.68))",
+              boxShadow: "0 32px 90px rgba(0, 0, 0, 0.2)",
+              backdropFilter: "blur(10px)",
+            }}
+            noValidate
+          >
+            <div
+              className="absolute inset-x-0 top-0 h-px"
+              style={{ background: "linear-gradient(90deg, transparent, rgba(184, 146, 74, 0.9), transparent)" }}
+              aria-hidden="true"
+            />
             {/* -- ¿Quién sos? -- */}
             <SectionSeparator label="¿Quién sos?" />
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
@@ -462,7 +498,7 @@ export function Contact() {
                 style={{
                   fontFamily: "'Inter', system-ui, sans-serif",
                   fontSize: "0.5rem",
-                  color: "rgba(212, 197, 169, 0.3)",
+                  color: "rgba(212, 197, 169, 0.42)",
                   letterSpacing: "0.15em",
                   textTransform: "uppercase",
                 }}
@@ -479,8 +515,8 @@ export function Contact() {
                 style={{
                   fontFamily: "'Inter', system-ui, sans-serif",
                   fontSize: "0.9rem",
-                  color: "#D4C5A9",
-                  borderBottom: "1px solid rgba(139, 106, 46, 0.15)",
+                  color: "#EAE3D5",
+                  borderBottom: "1px solid rgba(139, 106, 46, 0.24)",
                   marginTop: "0.5rem",
                 }}
               />
@@ -498,15 +534,20 @@ export function Contact() {
               <motion.button
                 type="submit"
                 disabled={status === "sending"}
-                className="group flex items-center gap-3"
-                whileHover={{ x: 6 }}
+                className="group flex items-center gap-3 px-7 py-4"
+                whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.98 }}
-                style={{ background: "none", border: "none", cursor: "pointer" }}
+                style={{
+                  background: "rgba(139, 106, 46, 0.16)",
+                  border: "1px solid rgba(184, 146, 74, 0.45)",
+                  cursor: status === "sending" ? "not-allowed" : "pointer",
+                  boxShadow: "0 18px 40px rgba(0, 0, 0, 0.18)",
+                }}
               >
                 <span
                   className="text-label transition-colors duration-300 group-hover:text-[#D4C5A9]"
                   style={{
-                    color: status === "sending" ? "rgba(212, 197, 169, 0.3)" : "#D4C5A9",
+                    color: status === "sending" ? "rgba(212, 197, 169, 0.3)" : "#EAE3D5",
                     fontSize: "0.55rem",
                     letterSpacing: "0.22em",
                   }}
@@ -521,7 +562,7 @@ export function Contact() {
             </div>
 
             {status === "error" && (
-              <p className="text-center" style={{ color: "#B8924A", fontSize: "0.85rem" }}>
+              <p className="text-center" style={{ color: "#D4B26A", fontSize: "0.85rem" }}>
                 Hubo un error. Intentá de nuevo o escribinos a hello@casauno.travel
               </p>
             )}
