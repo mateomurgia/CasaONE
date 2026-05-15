@@ -77,7 +77,7 @@ export async function POST(request: Request) {
 
     await transporter.sendMail({
       from: `"Casa Uno" <${process.env.SMTP_USER}>`,
-      to: "murgiamateo@gmail.com",
+      to: ["murgiamateo@gmail.com", "travelcasaone@gmail.com"],
       replyTo: email,
       subject: `Nueva consulta Casa Uno — ${name}`,
       html,
