@@ -356,6 +356,7 @@ a:focus-visible {
 /* --- Input & Form States --- */
 input[type="text"],
 input[type="email"],
+input[type="number"],
 textarea {
   background: transparent;
   border: none;
@@ -369,6 +370,7 @@ textarea {
 
 input[type="text"]:focus,
 input[type="email"]:focus,
+input[type="number"]:focus,
 textarea:focus {
   outline: none;
   border-bottom-color: #8B6A2E;
@@ -376,8 +378,20 @@ textarea:focus {
 
 input[type="text"]::placeholder,
 input[type="email"]::placeholder,
+input[type="number"]::placeholder,
 textarea::placeholder {
   color: rgba(107, 101, 96, 0.4);
+}
+
+input[type="number"] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 /* =====================
