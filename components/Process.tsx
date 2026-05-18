@@ -1,103 +1,127 @@
+"use client";
+
 import { ScrollReveal, StaggerContainer, StaggerItem } from "./ui/ScrollReveal";
 
 const steps = [
   {
-    step: "I",
-    title: "Escuchamos antes de proponer",
-    description: "Cada viaje empieza con una conversación sobre el viajero, no el destino. Diseñamos desde el carácter.",
+    num: "01",
+    title: "Perfil",
+    body: "Escuchamos al viajero. Tiempo, ritmo, intereses, vínculos. Lo que busca, lo que evita.",
   },
   {
-    step: "II",
-    title: "Analizamos y componemos",
-    description: "Mapeamos el perfil contra nuestro conocimiento de Argentina. No sacamos de un catálogo — componemos.",
+    num: "02",
+    title: "Diseño",
+    body: "Construimos un itinerario único: hoteles, experiencias, ritmo. Una narrativa, no un check-list.",
   },
   {
-    step: "III",
-    title: "Construimos el arco narrativo",
-    description: "Un gran viaje tiene una historia. Llegada, inmersión, revelación, crescendo. La secuencia importa.",
+    num: "03",
+    title: "Ajuste",
+    body: "Refinamos hasta que el viaje se siente propio. Cambios, sugerencias, detalles a pedido.",
   },
   {
-    step: "IV",
-    title: "Presentamos y refinamos",
-    description: "Explicamos no solo qué, sino por qué. Luego escuchamos de nuevo y ajustamos hasta que sea exactamente suyo.",
+    num: "04",
+    title: "Ejecución",
+    body: "Coordinamos toda la operación local. Proveedores, traslados, reservas. El viajero solo viaja.",
   },
   {
-    step: "V",
-    title: "Ejecutamos con precisión",
-    description: "La logística es invisible para el viajero — porque la manejamos por completo.",
-  },
-  {
-    step: "VI",
-    title: "Estamos presentes siempre",
-    description: "Desde la salida hasta el regreso. No como call center — como partner que conoce el itinerario de memoria.",
+    num: "05",
+    title: "Acompañamiento",
+    body: "Estamos disponibles durante todo el viaje. Si algo cambia, lo resolvemos en tiempo real.",
   },
 ];
 
 export function Process() {
   return (
-    <section id="process" className="py-32 lg:py-48" style={{ background: "var(--bg-base)" }}>
-      <div className="max-w-screen-xl mx-auto px-8 lg:px-16">
-        {/* HEADER */}
-        <div className="grid lg:grid-cols-12 mb-24 lg:mb-32 items-start">
-          <div className="lg:col-span-3">
-            <ScrollReveal delay={0.1} direction="none">
-              <div className="flex items-center gap-3 pt-1">
-                <span className="divider-earth" />
-                <span className="text-label" style={{ color: "var(--accent)", fontSize: "0.56rem", letterSpacing: "0.24em" }}>
-                  Cómo trabajamos
-                </span>
-              </div>
-            </ScrollReveal>
-          </div>
-          <div className="lg:col-span-6 mt-8 lg:mt-0">
-            <ScrollReveal delay={0.2}>
-              <h2 className="text-display-xl" style={{ color: "var(--text-base)" }}>
-                El método
-                <br />
-                <em style={{ color: "var(--accent)", fontStyle: "italic" }}>curatorial.</em>
-              </h2>
-            </ScrollReveal>
-          </div>
+    <section
+      id="proceso"
+      style={{
+        background: "linear-gradient(180deg, #17160F 0%, #1A1913 100%)",
+        padding: "18vh clamp(1.5rem, 6vw, 6rem)",
+      }}
+    >
+      <div className="mx-auto" style={{ maxWidth: "72rem" }}>
+        {/* Heading */}
+        <div className="text-center" style={{ marginBottom: "6rem" }}>
+          <ScrollReveal direction="none" delay={0.05}>
+            <span
+              className="text-label"
+              style={{
+                display: "block",
+                marginBottom: "1.5rem",
+                color: "#B8924A",
+                fontSize: "0.55rem",
+                letterSpacing: "0.24em",
+              }}
+            >
+              Modelo de trabajo
+            </span>
+          </ScrollReveal>
+          <ScrollReveal delay={0.15}>
+            <h2
+              style={{
+                fontFamily: "'Cormorant Garamond', Georgia, serif",
+                fontSize: "clamp(2rem, 4.5vw, 3.5rem)",
+                fontWeight: 300,
+                lineHeight: 1.1,
+                color: "#EAE3D5",
+              }}
+            >
+              Cómo trabajamos
+              <br />
+              <em style={{ fontStyle: "italic", color: "rgba(234, 227, 213, 0.48)" }}>
+                un viaje, paso a paso.
+              </em>
+            </h2>
+          </ScrollReveal>
         </div>
 
-        {/* GRID OF 6 STEPS */}
-        <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-16 lg:gap-20" staggerDelay={0.08}>
+        {/* Steps grid */}
+        <StaggerContainer
+          className="grid grid-cols-1 md:grid-cols-5"
+          staggerDelay={0.08}
+        >
           {steps.map((s) => (
-            <StaggerItem key={s.step}>
-              <div className="flex flex-col h-full">
-                {/* STEP NUMBER & DIVIDER */}
-                <div className="flex items-baseline gap-4 mb-6">
-                  <span
-                      style={{
-                        fontFamily: "'Cormorant Garamond', Georgia, serif",
-                        fontSize: "3.5rem",
-                        fontWeight: 300,
-                        color: "var(--text-subtle)",
-                        lineHeight: 1,
-                      }}
-                    >
-                    {s.step}
-                  </span>
-                  <span className="w-6 h-px flex-shrink-0" style={{ background: "#8B6A2E" }} />
-                </div>
-
-                {/* TITLE */}
-                <h3
+            <StaggerItem key={s.num} className="md:px-3">
+              <div
+                style={{
+                  padding: "2rem 0",
+                  position: "relative",
+                  borderTop: "1px solid rgba(139, 106, 46, 0.2)",
+                }}
+              >
+                <span
+                  style={{
+                    display: "block",
+                    fontFamily: "'Cormorant Garamond', Georgia, serif",
+                    fontSize: "2.6rem",
+                    fontWeight: 300,
+                    color: "rgba(212, 197, 169, 0.18)",
+                    lineHeight: 1,
+                    marginBottom: "1.25rem",
+                  }}
+                >
+                  {s.num}
+                </span>
+                <h4
                   style={{
                     fontFamily: "'Cormorant Garamond', Georgia, serif",
-                    fontSize: "1.375rem",
+                    fontSize: "1.3rem",
                     fontWeight: 400,
-                    color: "var(--text-base)",
-                    lineHeight: 1.25,
-                    marginBottom: "1rem",
+                    color: "#D4C5A9",
+                    marginBottom: "0.75rem",
+                    letterSpacing: "0.01em",
                   }}
                 >
                   {s.title}
-                </h3>
-
-                {/* DESCRIPTION */}
-                <p className="text-body-refined flex-1" style={{ color: "var(--text-muted)", lineHeight: 1.8 }}>
-                  {s.description}
+                </h4>
+                <p
+                  style={{
+                    fontSize: "0.82rem",
+                    color: "rgba(212, 197, 169, 0.54)",
+                    lineHeight: 1.65,
+                  }}
+                >
+                  {s.body}
                 </p>
               </div>
             </StaggerItem>

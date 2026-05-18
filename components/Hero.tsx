@@ -13,8 +13,10 @@ const heroVideos = [
 
 const navLinks = [
   { label: "Inicio", href: "#hero" },
+  { label: "Filosofía", href: "#filosofia" },
   { label: "Territorios", href: "#territories" },
   { label: "Viaje", href: "#journey" },
+  { label: "Equipo", href: "#equipo" },
   { label: "Contacto", href: "#contact" },
 ];
 
@@ -36,7 +38,7 @@ export function Hero() {
 
   // Track active section with IntersectionObserver
   useEffect(() => {
-    const sectionIds = ["hero", "territories", "journey", "contact"];
+    const sectionIds = ["hero", "filosofia", "territories", "journey", "proceso", "equipo", "contact"];
     const observers: IntersectionObserver[] = [];
 
     sectionIds.forEach((id) => {

@@ -2,42 +2,166 @@
 
 import { motion, useScroll, useTransform, useInView, useReducedMotion } from "framer-motion";
 import Image from "next/image";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import { DestinationModal, type DestinationData } from "./DestinationModal";
 
-const territories = [
+const territories: (DestinationData & { line: string })[] = [
   {
     num: "01",
     name: "Buenos Aires",
     line: "Cultura, arquitectura y gastronomía de autor. Recorridos privados por una ciudad que no duerme.",
     img: "/buenos-aires.jpg",
+    intro:
+      "La ciudad antes del viaje. Cultura europea, pasión latina y una gastronomía que se reinventa cada noche. Casa Uno la cuenta desde adentro — sin tour buses, sin clichés.",
+    note: "Estadía recomendada: 3 noches",
+    exp: [
+      {
+        n: "Hotel boutique",
+        d: "Selección curada en Recoleta o Palermo Soho, propiedades con menos de 40 habitaciones.",
+      },
+      {
+        n: "Recorrido por barrios históricos",
+        d: "San Telmo, Recoleta, La Boca y Palermo con un guía privado que vive ahí hace décadas.",
+      },
+      {
+        n: "Gastronomía de autor",
+        d: "Mesas en parrillas de autor y restaurantes premiados. Cierres privados a pedido.",
+      },
+      {
+        n: "Tango en milonga privada",
+        d: "Un show en salón cerrado, sin turistas, con bailarines y músicos en vivo a metros.",
+      },
+      {
+        n: "Estadio Monumental",
+        d: "Recorrido vacío o partido de River — según calendario — con acceso a sectores no públicos.",
+      },
+    ],
   },
   {
     num: "02",
     name: "Mendoza",
     line: "Catas privadas con productores que redefinen el vino argentino. Los Andes al atardecer.",
     img: "/mendoza.jpg",
+    intro:
+      "El Malbec al pie de los Andes. Pero también Cabernet Franc, Bonarda, vinos de alta montaña. Mendoza no es una sola degustación — es una conversación con la tierra.",
+    note: "Estadía recomendada: 3 noches",
+    exp: [
+      {
+        n: "Lodge en Valle de Uco",
+        d: "Hospedaje en bodega o lodge boutique con vista a la cordillera. Cocina de autor con producto local.",
+      },
+      {
+        n: "Degustaciones privadas",
+        d: "Tres bodegas seleccionadas. Encuentros con enólogos, no con guides de visita.",
+      },
+      {
+        n: "Almuerzo entre viñedos",
+        d: "Mesa larga en medio de las cepas, menú de cinco pasos maridado con producción propia.",
+      },
+      {
+        n: "Andes al atardecer",
+        d: "Subida en 4x4 a un mirador privado en Vista Flores. Vino, silencio y la cordillera tomando rojo.",
+      },
+      {
+        n: "Cocina entre olivos",
+        d: "Clase con un chef local, producto del día, sobremesa larga. La idea de Mendoza, en una tarde.",
+      },
+    ],
   },
   {
     num: "03",
     name: "Bariloche",
     line: "Lagos en silencio, bosques sin multitudes. El Nahuel Huapi en barco privado.",
     img: "/bariloche.jpg",
+    intro:
+      "La Patagonia que pocos llegan a ver: lagos en silencio, bosques de coihues sin senderos saturados, lodges arquitectónicos a orillas del Nahuel Huapi.",
+    note: "Estadía recomendada: 3 noches",
+    exp: [
+      {
+        n: "Lodge frente al lago",
+        d: "Propiedad boutique sobre Nahuel Huapi o Moreno. Arquitectura de montaña, no resort.",
+      },
+      {
+        n: "Navegación privada",
+        d: "Embarcación exclusiva por el lago. Isla Victoria y Bosque de Arrayanes sin grupos.",
+      },
+      {
+        n: "Sendero sin multitudes",
+        d: "Trekking guiado por rutas que no aparecen en TripAdvisor. Tres horas, dificultad media.",
+      },
+      {
+        n: "Gastronomía de montaña",
+        d: "Cordero patagónico, trucha, hongos del bosque. Producto del día, código riguroso.",
+      },
+      {
+        n: "Cerro Catedral",
+        d: "Acceso a sectores cerrados o subida en chairlift privado según temporada.",
+      },
+    ],
   },
   {
     num: "04",
     name: "El Calafate",
     line: "El Perito Moreno en condiciones exclusivas. El sonido que cambia algo en uno.",
     img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1600&q=90",
+    intro:
+      "El Perito Moreno no se ve — se escucha. El crujido, la caída, el eco. Casa Uno lo diseña sin colas, sin balcones llenos. Una experiencia silenciosa.",
+    note: "Estadía recomendada: 2 noches",
+    exp: [
+      {
+        n: "Glaciar Perito Moreno",
+        d: "Acceso temprano antes del público general. Pasarelas privadas y guide glaólogo.",
+      },
+      {
+        n: "Navegación entre témpanos",
+        d: "Embarcación pequeña por el Lago Argentino. Cara sur del glaciar, sin grupos.",
+      },
+      {
+        n: "Minitrekking sobre el hielo",
+        d: "Caminata sobre la superficie del glaciar con crampones. Whisky con hielo milenario al cierre.",
+      },
+      {
+        n: "Cena patagónica",
+        d: "Cordero al asador en estancia histórica. Fogata, malbec del lugar, el silencio del sur.",
+      },
+    ],
   },
   {
     num: "05",
     name: "Ushuaia",
     line: "Canal Beagle y la luz del fin del mundo. La sensación de estar en el borde de algo.",
     img: "/ushuaia.jpg",
+    intro:
+      "El borde del continente. Una luz que en verano dura hasta las diez. Una sensación física de estar en el límite — que pocos lugares en el mundo todavía dan.",
+    note: "Estadía recomendada: 2 noches",
+    exp: [
+      {
+        n: "Canal Beagle privado",
+        d: "Velero o catamarán exclusivo. Faro Les Éclaireurs, loberías, isla de pinguinos según temporada.",
+      },
+      {
+        n: "Parque Nacional Tierra del Fuego",
+        d: "Caminata guiada por la Bahía Lapataia. El último kilómetro de la Ruta 3.",
+      },
+      {
+        n: "Centolla y cocina austral",
+        d: "Mesa privada con producto del Beagle. Centolla, mítilos, vinos patagónicos.",
+      },
+      {
+        n: "Luz de medianoche",
+        d: "En verano el atardecer dura horas. Una cena planificada para coincidir con esa luz.",
+      },
+    ],
   },
 ];
 
-function TerritoryRow({ t, index }: { t: (typeof territories)[0]; index: number }) {
+interface TerritoryRowProps {
+  t: (typeof territories)[number];
+  index: number;
+  onOpen: () => void;
+}
+
+function TerritoryRow({ t, index, onOpen }: TerritoryRowProps) {
   const ref = useRef<HTMLDivElement>(null);
   const imgRef = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px 0px" });
@@ -51,10 +175,22 @@ function TerritoryRow({ t, index }: { t: (typeof territories)[0]; index: number 
 
   const isReversed = index % 2 !== 0;
 
+  const handleKey = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      onOpen();
+    }
+  };
+
   return (
     <motion.div
       ref={ref}
-      className={`grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-20 items-center ${
+      role="button"
+      tabIndex={0}
+      aria-label={`Ver experiencias en ${t.name}`}
+      onClick={onOpen}
+      onKeyDown={handleKey}
+      className={`grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-20 items-center cursor-pointer ${
         isReversed ? "md:[direction:rtl]" : ""
       }`}
       initial={{ opacity: 0, y: 50 }}
@@ -115,7 +251,7 @@ function TerritoryRow({ t, index }: { t: (typeof territories)[0]; index: number 
       </motion.div>
 
       {/* Text */}
-      <div style={{ direction: "ltr" }} className="flex flex-col justify-center">
+      <div style={{ direction: "ltr" }} className="flex flex-col justify-center group/text">
         <span
           className="text-label mb-4"
           style={{ color: "#8B6A2E", fontSize: "0.55rem", letterSpacing: "0.24em" }}
@@ -123,7 +259,6 @@ function TerritoryRow({ t, index }: { t: (typeof territories)[0]; index: number 
           Territorio {t.num}
         </span>
         <h3
-          className="group"
           style={{
             fontFamily: "'Cormorant Garamond', Georgia, serif",
             fontSize: "clamp(2rem, 4vw, 3.2rem)",
@@ -150,6 +285,32 @@ function TerritoryRow({ t, index }: { t: (typeof territories)[0]; index: number 
         >
           {t.line}
         </p>
+        <span
+          className="inline-flex items-center"
+          style={{
+            marginTop: "2rem",
+            color: "#B8924A",
+            fontSize: "0.55rem",
+            letterSpacing: "0.22em",
+            textTransform: "uppercase",
+            fontWeight: 500,
+            gap: "0.75rem",
+            transition: "gap 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+          }}
+        >
+          Ver experiencias
+          <span
+            aria-hidden="true"
+            className="more-line"
+            style={{
+              display: "block",
+              height: "1px",
+              width: "2rem",
+              background: "#8B6A2E",
+              transition: "width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+            }}
+          />
+        </span>
       </div>
     </motion.div>
   );
@@ -158,6 +319,7 @@ function TerritoryRow({ t, index }: { t: (typeof territories)[0]; index: number 
 export function Territories() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const inView = useInView(sectionRef, { once: true, margin: "-100px 0px" });
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   return (
     <section
@@ -204,9 +366,15 @@ export function Territories() {
       {/* Territory rows */}
       <div className="max-w-6xl mx-auto flex flex-col gap-20 md:gap-32">
         {territories.map((t, i) => (
-          <TerritoryRow key={t.num} t={t} index={i} />
+          <TerritoryRow key={t.num} t={t} index={i} onOpen={() => setActiveIndex(i)} />
         ))}
       </div>
+
+      <DestinationModal
+        open={activeIndex !== null}
+        territory={activeIndex !== null ? territories[activeIndex] : null}
+        onClose={() => setActiveIndex(null)}
+      />
     </section>
   );
 }

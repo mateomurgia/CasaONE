@@ -86,23 +86,37 @@ function FloatingInput({
   onChange: (v: string) => void;
 }) {
   const [focused, setFocused] = useState(false);
+  const float = focused || value.trim() !== "";
 
   return (
     <div
-      className="group relative rounded-[3px] border px-4 pb-3 pt-7 transition-all duration-300"
+      className="relative rounded-[3px] border transition-all duration-300"
       style={{
         borderColor: focused ? "rgba(196, 154, 77, 0.68)" : "rgba(184, 146, 74, 0.22)",
         background: focused ? "rgba(255, 255, 255, 0.035)" : "rgba(10, 10, 8, 0.2)",
         boxShadow: focused ? "0 16px 34px rgba(0, 0, 0, 0.18)" : "none",
+        padding: "0.75rem 1rem",
+        minHeight: "56px",
       }}
     >
       <label
         htmlFor={name}
-        className="text-label absolute left-4 top-3 transition-colors duration-300 pointer-events-none"
+        className="pointer-events-none absolute"
         style={{
-          fontSize: "0.5rem",
-          color: focused ? "#C49A4D" : "rgba(234, 227, 213, 0.52)",
-          letterSpacing: "0.16em",
+          left: "1rem",
+          top: float ? "0.42rem" : "50%",
+          transform: float ? "none" : "translateY(-50%)",
+          fontSize: float ? "0.48rem" : "0.875rem",
+          fontFamily: "'Inter', system-ui, sans-serif",
+          fontWeight: float ? 500 : 400,
+          letterSpacing: float ? "0.16em" : "0.01em",
+          textTransform: float ? "uppercase" : "none",
+          color: focused ? "#C49A4D" : float ? "rgba(184,146,74,0.7)" : "rgba(234,227,213,0.38)",
+          transition: "all 0.25s cubic-bezier(0.25,0.46,0.45,0.94)",
+          whiteSpace: "nowrap",
+          overflow: "hidden",
+          maxWidth: "calc(100% - 2rem)",
+          textOverflow: "ellipsis",
         }}
       >
         {label}
@@ -119,13 +133,14 @@ function FloatingInput({
         onChange={(e) => onChange(e.target.value)}
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
-        className="w-full bg-transparent outline-none transition-colors"
+        className="w-full bg-transparent outline-none"
         style={{
           fontFamily: "'Inter', system-ui, sans-serif",
           fontSize: "0.95rem",
           color: "#F0EAE0",
-          minHeight: "30px",
+          paddingTop: float ? "1.1rem" : "0.1rem",
           caretColor: "#C49A4D",
+          transition: "padding-top 0.25s cubic-bezier(0.25,0.46,0.45,0.94)",
         }}
       />
     </div>
@@ -289,23 +304,36 @@ function SelectField({
   onChange: (v: string) => void;
 }) {
   const [focused, setFocused] = useState(false);
+  const float = focused || value !== "";
 
   return (
     <div
-      className="relative rounded-[3px] border px-4 pb-3 pt-7 transition-all duration-300"
+      className="relative rounded-[3px] border transition-all duration-300"
       style={{
         borderColor: focused ? "rgba(196, 154, 77, 0.68)" : "rgba(184, 146, 74, 0.22)",
         background: focused ? "rgba(255, 255, 255, 0.035)" : "rgba(10, 10, 8, 0.2)",
+        padding: "0.75rem 1rem",
+        minHeight: "56px",
       }}
     >
       <label
         htmlFor={name}
-        className="text-label absolute left-4 top-3 pointer-events-none"
+        className="pointer-events-none absolute"
         style={{
-          fontSize: "0.5rem",
-          color: focused ? "#C49A4D" : "rgba(234, 227, 213, 0.52)",
-          letterSpacing: "0.16em",
-          transition: "color 300ms",
+          left: "1rem",
+          top: float ? "0.42rem" : "50%",
+          transform: float ? "none" : "translateY(-50%)",
+          fontSize: float ? "0.48rem" : "0.875rem",
+          fontFamily: "'Inter', system-ui, sans-serif",
+          fontWeight: float ? 500 : 400,
+          letterSpacing: float ? "0.16em" : "0.01em",
+          textTransform: float ? "uppercase" : "none",
+          color: focused ? "#C49A4D" : float ? "rgba(184,146,74,0.7)" : "rgba(234,227,213,0.38)",
+          transition: "all 0.25s cubic-bezier(0.25,0.46,0.45,0.94)",
+          whiteSpace: "nowrap",
+          overflow: "hidden",
+          maxWidth: "calc(100% - 2.5rem)",
+          textOverflow: "ellipsis",
         }}
       >
         {label}
@@ -321,8 +349,9 @@ function SelectField({
         style={{
           fontFamily: "'Inter', system-ui, sans-serif",
           fontSize: "0.95rem",
-          color: value ? "#F0EAE0" : "rgba(234, 227, 213, 0.52)",
-          minHeight: "30px",
+          color: float ? "#F0EAE0" : "transparent",
+          paddingTop: float ? "1.1rem" : "0.1rem",
+          transition: "color 0.2s, padding-top 0.25s cubic-bezier(0.25,0.46,0.45,0.94)",
         }}
       >
         <option value="" style={{ background: "#141411", color: "#D4C5A9" }}>
@@ -336,8 +365,15 @@ function SelectField({
       </select>
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2"
-        style={{ color: "rgba(212, 197, 169, 0.52)", fontSize: "0.9rem" }}
+        className="pointer-events-none absolute"
+        style={{
+          right: "1rem",
+          top: float ? "calc(50% + 0.4rem)" : "50%",
+          transform: "translateY(-50%)",
+          color: "rgba(212, 197, 169, 0.52)",
+          fontSize: "0.9rem",
+          transition: "top 0.25s cubic-bezier(0.25,0.46,0.45,0.94)",
+        }}
       >
         ▾
       </span>
@@ -357,23 +393,31 @@ function TextareaField({
   onChange: (v: string) => void;
 }) {
   const [focused, setFocused] = useState(false);
+  const float = focused || value.trim() !== "";
 
   return (
     <div
-      className="relative rounded-[3px] border px-4 pb-3 pt-7 transition-all duration-300"
+      className="relative rounded-[3px] border transition-all duration-300"
       style={{
         borderColor: focused ? "rgba(196, 154, 77, 0.68)" : "rgba(184, 146, 74, 0.22)",
         background: focused ? "rgba(255, 255, 255, 0.035)" : "rgba(10, 10, 8, 0.2)",
+        padding: "0.75rem 1rem",
       }}
     >
       <label
         htmlFor={name}
-        className="text-label absolute left-4 top-3 pointer-events-none"
+        className="pointer-events-none absolute"
         style={{
-          fontSize: "0.5rem",
-          color: focused ? "#C49A4D" : "rgba(234, 227, 213, 0.52)",
-          letterSpacing: "0.16em",
-          transition: "color 300ms",
+          left: "1rem",
+          top: float ? "0.42rem" : "0.9rem",
+          fontSize: float ? "0.48rem" : "0.875rem",
+          fontFamily: "'Inter', system-ui, sans-serif",
+          fontWeight: float ? 500 : 400,
+          letterSpacing: float ? "0.16em" : "0.01em",
+          textTransform: float ? "uppercase" : "none",
+          color: focused ? "#C49A4D" : float ? "rgba(184,146,74,0.7)" : "rgba(234,227,213,0.38)",
+          transition: "all 0.25s cubic-bezier(0.25,0.46,0.45,0.94)",
+          maxWidth: "calc(100% - 2rem)",
         }}
       >
         {label}
@@ -393,6 +437,8 @@ function TextareaField({
           color: "#F0EAE0",
           minHeight: "8rem",
           caretColor: "#C49A4D",
+          paddingTop: float ? "1.1rem" : "1.8rem",
+          transition: "padding-top 0.25s cubic-bezier(0.25,0.46,0.45,0.94)",
         }}
       />
     </div>
