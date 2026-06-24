@@ -254,14 +254,14 @@ export function Hero() {
             src="/logo.svg"
             alt="Casa Uno"
             style={{
-              width: "clamp(100px, 18vw, 180px)",
+              width: "clamp(160px, 28vw, 300px)",
               height: "auto",
               margin: "0 auto 2.5rem",
               display: "block",
-              filter: "drop-shadow(0 0 44px rgba(12,12,10,0.62))",
+              filter: "drop-shadow(0 0 80px rgba(212,197,169,0.55)) drop-shadow(0 0 30px rgba(184,146,74,0.4)) brightness(1.15)",
             }}
             initial={{ opacity: 0, y: 30, scale: 0.92 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
+            animate={{ opacity: 0.82, y: 0, scale: 1 }}
             whileHover={{ scale: 1.025 }}
             transition={{ duration: 1.4, delay: 0, ease: [0.25, 0.46, 0.45, 0.94] }}
           />
@@ -280,7 +280,7 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
-            No vendemos destinos.
+            Cada viaje tiene una historia.
           </motion.h1>
 
           <motion.h1
@@ -299,7 +299,7 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, delay: 0.45, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
-            Diseñamos experiencias.
+            Diseñemos la tuya.
           </motion.h1>
 
           {/* Subtitle */}

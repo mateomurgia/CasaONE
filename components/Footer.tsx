@@ -79,11 +79,11 @@ export function Footer() {
             </span>
             <div className="flex flex-col gap-4">
               <a
-                href="mailto:travelcasaone@gmail.com"
+                href="mailto:hola@casauno.travel"
                 className="link-underline text-body-refined text-sm transition-colors hover:text-earth"
                 style={{ color: "var(--text-subtle)" }}
               >
-                travelcasaone@gmail.com
+                hola@casauno.travel
               </a>
               <span className="text-body-refined text-sm" style={{ color: "var(--text-muted)" }}>
                 Buenos Aires, Argentina

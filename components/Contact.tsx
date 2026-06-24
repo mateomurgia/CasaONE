@@ -7,7 +7,7 @@ import { useRef, useState } from "react";
 const destinationOptions = ["Buenos Aires", "Mendoza", "Patagonia", "Salta", "Bariloche", "Varios"];
 const experienceOptions = ["Cultural", "Aventura", "Gastronomía", "Bienestar", "Todo"];
 const travelWithOptions = ["Solo/a", "En pareja", "Familia", "Grupo"];
-const howFoundOptions = ["Instagram", "Recomendación", "Google", "Otro"];
+const howFoundOptions = ["Redes sociales", "Recomendación", "Buscador", "Otro"];
 
 function SectionSeparator({ label }: { label: string }) {
   return (
@@ -596,6 +596,7 @@ export function Contact() {
                     name="people"
                     inputMode="numeric"
                     pattern="[0-9]*"
+                    required
                     value={form.people}
                     onChange={(v) => set("people", v)}
                   />
@@ -611,10 +612,10 @@ export function Contact() {
             </FormBlock>
 
             <FormBlock>
-              <SectionSeparator label="Contanos más" />
+              <SectionSeparator label="¿Qué buscás de Casa Uno?" />
               <div className="grid grid-cols-1 gap-4 lg:grid-cols-[1.35fr_0.65fr]">
                 <TextareaField
-                  label="¿Hay algo especial que quieras vivir en Argentina?"
+                  label="¿Qué esperás de Casa Uno?"
                   name="special"
                   value={form.special}
                   onChange={(v) => set("special", v)}
@@ -663,7 +664,7 @@ export function Contact() {
 
             {status === "error" && (
               <p className="text-center" style={{ color: "#D4B26A", fontSize: "0.85rem" }}>
-                Hubo un error. Intentá de nuevo o escribinos a travelcasaone@gmail.com
+                Hubo un error. Intentá de nuevo o escribinos a hola@casauno.travel
               </p>
             )}
           </form>
@@ -686,7 +687,7 @@ export function Contact() {
           Casa Uno
         </span>
         <a
-          href="mailto:travelcasaone@gmail.com"
+          href="mailto:hola@casauno.travel"
           className="text-label link-underline"
           style={{
             color: "rgba(212, 197, 169, 0.3)",
@@ -694,7 +695,7 @@ export function Contact() {
             letterSpacing: "0.18em",
           }}
         >
-          travelcasaone@gmail.com
+          hola@casauno.travel
         </a>
         <span
           style={{
