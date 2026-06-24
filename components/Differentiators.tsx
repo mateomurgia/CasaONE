@@ -24,7 +24,7 @@ const points = [
 
 export function Differentiators() {
   return (
-    <section className="py-28 lg:py-40" style={{ background: "var(--bg-contrast)" }}>
+    <section className="py-28 lg:py-40" style={{ background: "#141411" }}>
       <div className="max-w-screen-xl mx-auto px-8 lg:px-16">
         <SectionHeader label="La diferencia" title="Lo que nos hace distintos." layout="stacked" />
 
@@ -40,11 +40,11 @@ export function Differentiators() {
                   {point.index}
                 </motion.span>
 
-                <h3 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "1.25rem", fontWeight: 400, color: "var(--text-inverse)", lineHeight: 1.25, marginBottom: "0.5rem" }}>
+                <h3 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "1.25rem", fontWeight: 400, color: "#D4C5A9", lineHeight: 1.25, marginBottom: "0.5rem" }}>
                   {point.title}
                 </h3>
 
-                <p className="text-body-refined" style={{ color: "var(--text-subtle)", lineHeight: 1.6 }}>
+                <p className="text-body-refined" style={{ color: "rgba(212, 197, 169, 0.5)", lineHeight: 1.6 }}>
                   {point.body}
                 </p>
               </motion.div>
