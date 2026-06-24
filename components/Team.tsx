@@ -5,38 +5,29 @@ const members = [
     initial: "V",
     name: "Vanesa",
     role: "Estrategia & Relaciones",
-    bio: "Licenciada en Dirección de Negocios, con trayectoria en compañías nacionales e internacionales. Construye vínculos con agencias, hoteles y proveedores, y traduce cada destino en una propuesta clara, cuidada y coherente. Su mirada combina planificación, negociación y sensibilidad por los detalles que convierten un viaje en una experiencia memorable.",
-    quote:
-      "Necesito que el viaje sea organizado y diseñado como si fuese una boda — que todo detalle esté cuidado.",
+    bio: "Con más de 20 años en el mundo de los negocios y la hotelería de lujo, Vanesa entiende lo que los viajeros más exigentes necesitan antes de que ellos mismos lo sepan. Su red de contactos en Argentina es única: productores, chefs, hoteleros, guías. Gente que abre puertas que no figuran en ningún mapa.",
+    quote: "Un viaje memorable no es el que más lugares recorre, sino el que más cosas hace sentir.",
   },
   {
     initial: "J",
     name: "Jazmín",
     role: "Diseño & Operación de Viajes",
-    bio: "Licenciada en Turismo y Hotelería. Su experiencia en hotelería internacional y turismo de lujo le permite diseñar itinerarios precisos, fluidos y profundamente personalizados. Selecciona cada hotel, experiencia y transición para que el viaje se viva con naturalidad, sin improvisaciones y con la tranquilidad de saber que todo está pensado.",
-    quote:
-      "Muchos de mis viajes me enseñaron que la diferencia entre una experiencia correcta y una inolvidable no está en el destino, sino en las decisiones que se toman antes de partir. Casa Uno nace de esas vivencias y del deseo de ayudar a otros viajeros a descubrir lo mejor de cada lugar, sin perder tiempo ni oportunidades en el camino.",
+    bio: "Jazmín combina formación en turismo con una sensibilidad estética que se nota en cada itinerario. Es la arquitecta de los viajes de Casa Uno: piensa en ritmos, en transiciones, en la coherencia entre un alojamiento y una experiencia. Y cuando algo cambia sobre la marcha, ella ya tiene el plan B listo.",
+    quote: "Me gusta que cuando el viajero llega a destino, todo fluya tan bien que parezca fácil. Eso es lo más difícil de lograr.",
   },
 ];
 
 export function Team() {
   return (
-    <section
-      id="team"
-      className="py-32 lg:py-48"
-      style={{ background: "var(--bg-contrast)" }}
-    >
+    <section id="team" className="py-32 lg:py-48" style={{ background: "var(--bg-contrast)" }}>
       <div className="max-w-screen-xl mx-auto px-8 lg:px-16">
-        {/* Header */}
-        <div className="grid lg:grid-cols-12 mb-20 lg:mb-28 items-start">
+        {/* HEADER */}
+        <div className="grid lg:grid-cols-12 mb-24 lg:mb-32 items-start">
           <div className="lg:col-span-3">
             <ScrollReveal delay={0.1} direction="none">
               <div className="flex items-center gap-3 pt-1">
                 <span className="divider-earth" />
-                <span
-                  className="text-label"
-                  style={{ color: "var(--accent)", fontSize: "0.56rem", letterSpacing: "0.24em" }}
-                >
+                <span className="text-label" style={{ color: "var(--accent)", fontSize: "0.56rem", letterSpacing: "0.24em" }}>
                   Quiénes somos
                 </span>
               </div>
@@ -53,106 +44,89 @@ export function Team() {
           </div>
         </div>
 
-        {/* Team members */}
-        <StaggerContainer className="grid md:grid-cols-2 gap-px" staggerDelay={0.12}>
+        {/* TEAM GRID */}
+        <StaggerContainer className="grid md:grid-cols-2 gap-16 lg:gap-24" staggerDelay={0.1}>
           {members.map((m) => (
             <StaggerItem key={m.name}>
-              <div
-                className="p-8 lg:p-12 flex flex-col gap-6 h-full"
-                style={{ border: "1px solid rgba(226, 221, 213, 0.06)" }}
-              >
-                {/* Avatar initial */}
-                <div
-                  style={{
-                    width: "52px",
-                    height: "52px",
-                    borderRadius: "50%",
-                    border: "1px solid rgba(184, 146, 74, 0.35)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontFamily: "'Cormorant Garamond', Georgia, serif",
-                    fontSize: "1.4rem",
-                    fontWeight: 300,
-                    color: "var(--accent)",
-                  }}
-                >
-                  {m.initial}
-                </div>
-
-                {/* Name + role */}
-                <div>
-                  <h3
+              <div className="flex flex-col h-full">
+                {/* Initial */}
+                <div className="flex items-baseline gap-4 mb-8">
+                  <span
                     style={{
                       fontFamily: "'Cormorant Garamond', Georgia, serif",
-                      fontSize: "1.75rem",
-                      fontWeight: 400,
-                      color: "var(--text-inverse)",
-                      lineHeight: 1.1,
-                      marginBottom: "0.4rem",
+                      fontSize: "4rem",
+                      fontWeight: 300,
+                      color: "var(--accent)",
+                      lineHeight: 1,
+                      opacity: 0.6,
                     }}
                   >
-                    {m.name}
-                  </h3>
-                  <span
-                    className="text-label"
-                    style={{ color: "var(--accent)", fontSize: "0.52rem", letterSpacing: "0.2em" }}
-                  >
-                    {m.role}
+                    {m.initial}
                   </span>
+                  <span className="w-6 h-px flex-shrink-0" style={{ background: "#8B6A2E" }} />
                 </div>
 
-                {/* Bio */}
-                <p
-                  className="text-body-refined flex-1"
-                  style={{ color: "var(--text-subtle)", lineHeight: 1.8 }}
+                {/* Name & Role */}
+                <h3
+                  style={{
+                    fontFamily: "'Cormorant Garamond', Georgia, serif",
+                    fontSize: "1.6rem",
+                    fontWeight: 400,
+                    color: "var(--text-base)",
+                    lineHeight: 1.2,
+                    marginBottom: "0.25rem",
+                  }}
                 >
+                  {m.name}
+                </h3>
+                <span
+                  className="text-label"
+                  style={{ color: "var(--accent)", fontSize: "0.52rem", letterSpacing: "0.2em", marginBottom: "1.5rem", display: "block" }}
+                >
+                  {m.role}
+                </span>
+
+                {/* Bio */}
+                <p className="text-body-refined flex-1" style={{ color: "var(--text-muted)", lineHeight: 1.9, marginBottom: "1.5rem" }}>
                   {m.bio}
                 </p>
 
                 {/* Quote */}
-                <blockquote
+                <p
                   style={{
                     fontFamily: "'Cormorant Garamond', Georgia, serif",
                     fontSize: "1.05rem",
                     fontWeight: 300,
                     fontStyle: "italic",
-                    color: "var(--text-muted)",
+                    color: "var(--text-subtle)",
                     lineHeight: 1.65,
-                    borderLeft: "2px solid rgba(184, 146, 74, 0.35)",
                     paddingLeft: "1rem",
-                    marginTop: "0.5rem",
+                    borderLeft: "1px solid rgba(184, 146, 74, 0.3)",
                   }}
                 >
-                  &ldquo;{m.quote}&rdquo;
-                </blockquote>
+                  "{m.quote}"
+                </p>
               </div>
             </StaggerItem>
           ))}
         </StaggerContainer>
 
-        {/* Mother & daughter closing */}
-        <ScrollReveal delay={0.3}>
+        {/* Closing — madre e hija */}
+        <ScrollReveal delay={0.2}>
           <div
-            className="mt-16 lg:mt-20 text-center max-w-2xl mx-auto"
-            style={{
-              borderTop: "1px solid rgba(139, 106, 46, 0.12)",
-              paddingTop: "2.5rem",
-            }}
+            className="mt-24 lg:mt-32 max-w-2xl mx-auto text-center"
+            style={{ paddingTop: "3rem", borderTop: "1px solid rgba(184, 146, 74, 0.12)" }}
           >
             <p
               style={{
                 fontFamily: "'Cormorant Garamond', Georgia, serif",
-                fontSize: "clamp(1.1rem, 2vw, 1.35rem)",
+                fontSize: "1.1rem",
                 fontWeight: 300,
-                fontStyle: "italic",
                 color: "var(--text-muted)",
-                lineHeight: 1.75,
+                lineHeight: 1.9,
               }}
             >
-              Somos madre e hija, profesionales de negocios, hotelería y turismo.
-              Creamos viajes a medida con el mismo nivel de detalle con el que se organiza
-              una boda: cada experiencia es única. Ese es el espíritu de Casa Uno.
+              Somos madre e hija, profesionales de negocios, hotelería y turismo que decidimos juntar nuestras miradas para crear algo diferente. Casa Uno es el resultado de esa conversación: un espacio donde la experiencia se encuentra con el diseño, y el rigor con el cariño.
             </p>
           </div>
         </ScrollReveal>

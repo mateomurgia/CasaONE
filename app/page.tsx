@@ -26,8 +26,9 @@ export default function Home() {
         <Journey />
         <SectionDividerReverse />
         <Team />
-        <Process />
         <SectionDivider />
+        <Process />
+        <SectionDividerReverse />
         <Contact />
       </main>
     </>

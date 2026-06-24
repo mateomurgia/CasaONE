@@ -2,84 +2,50 @@
 
 import { motion } from "framer-motion";
 import { ScrollReveal, StaggerContainer, StaggerItem } from "./ui/ScrollReveal";
+import { SectionHeader } from "./ui/SectionHeader";
 
-const pillars = [
+const points = [
   {
-    index: "i.",
+    index: "i",
     title: "Curaduría humana",
-    body: "Cada itinerario se crea desde cero. Escuchamos lo que imaginás y lo transformamos en una experiencia única, pensada exclusivamente para vos.",
+    body: "Cada viaje es diseñado por personas, no por algoritmos. Escuchamos, interpretamos y componemos una propuesta que refleja quién sos como viajero.",
   },
   {
-    index: "ii.",
+    index: "ii",
     title: "Identidad local",
-    body: "Elegimos cada hotel, experiencia y recomendación con criterio, sensibilidad y conocimiento. Menos cantidad, más calidad.",
+    body: "Trabajamos con una red de guías, productores y anfitriones que conocen Argentina desde adentro. No mostramos el país — lo abrimos.",
   },
   {
-    index: "iii.",
+    index: "iii",
     title: "El wow silencioso",
-    body: "Un traslado perfectamente coordinado. Una mesa reservada en el momento justo. Un hotel que supera tus expectativas. Son esos pequeños detalles los que transforman un viaje en una experiencia inolvidable.",
+    body: "Los mejores momentos de un viaje no se anuncian. Se diseñan con detalle, se ejecutan con precisión y se sienten como algo que simplemente... pasa.",
   },
 ];
 
 export function Differentiators() {
   return (
-    <section
-      className="py-28 lg:py-40"
-      style={{ background: "var(--bg-contrast)" }}
-    >
+    <section className="py-28 lg:py-40" style={{ background: "var(--bg-contrast)" }}>
       <div className="max-w-screen-xl mx-auto px-8 lg:px-16">
-        <ScrollReveal delay={0.1} direction="none">
-          <div className="flex items-center gap-3 mb-16">
-            <span className="divider-earth" />
-            <span
-              className="text-label"
-              style={{ color: "var(--accent)", fontSize: "0.56rem", letterSpacing: "0.24em" }}
-            >
-              Nuestra diferencia
-            </span>
-          </div>
-        </ScrollReveal>
+        <SectionHeader label="La diferencia" title="Lo que nos hace distintos." layout="stacked" />
 
-        <StaggerContainer
-          className="grid md:grid-cols-3 gap-px"
-          staggerDelay={0.1}
-        >
-          {pillars.map((p) => (
-            <StaggerItem key={p.index}>
+        <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-px mt-8" staggerDelay={0.08}>
+          {points.map((point) => (
+            <StaggerItem key={point.index}>
               <motion.div
-                className="p-8 lg:p-12 flex flex-col gap-5 h-full transition-all duration-500"
+                className="p-8 lg:p-10 transition-all duration-500 cursor-default relative group"
                 style={{ border: "1px solid rgba(226, 221, 213, 0.06)" }}
                 whileHover={{ background: "rgba(139, 106, 46, 0.06)" }}
               >
-                <span
-                  style={{
-                    fontFamily: "'Cormorant Garamond', Georgia, serif",
-                    fontSize: "1.5rem",
-                    fontWeight: 300,
-                    fontStyle: "italic",
-                    color: "var(--accent)",
-                  }}
-                >
-                  {p.index}
-                </span>
+                <motion.span className="text-label block mb-6" style={{ color: "var(--accent)", fontSize: "0.52rem", letterSpacing: "0.2em" }} whileHover={{ scale: 1.05 }}>
+                  {point.index}
+                </motion.span>
 
-                <h3
-                  style={{
-                    fontFamily: "'Cormorant Garamond', Georgia, serif",
-                    fontSize: "1.5rem",
-                    fontWeight: 400,
-                    color: "var(--text-inverse)",
-                    lineHeight: 1.2,
-                  }}
-                >
-                  {p.title}
+                <h3 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "1.25rem", fontWeight: 400, color: "var(--text-inverse)", lineHeight: 1.25, marginBottom: "0.5rem" }}>
+                  {point.title}
                 </h3>
 
-                <p
-                  className="text-body-refined"
-                  style={{ color: "var(--text-subtle)", lineHeight: 1.75 }}
-                >
-                  {p.body}
+                <p className="text-body-refined" style={{ color: "var(--text-subtle)", lineHeight: 1.6 }}>
+                  {point.body}
                 </p>
               </motion.div>
             </StaggerItem>

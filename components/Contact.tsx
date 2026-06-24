@@ -707,7 +707,4 @@ export function Contact() {
         >
           &copy; {new Date().getFullYear()}
         </span>
-      </div>
-    </section>
-  );
-}
+      </
